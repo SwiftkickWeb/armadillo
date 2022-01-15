@@ -3,17 +3,17 @@
 class Client {
     name : string
     address : string
-    {method} has_many :notes, polymorphic: true 
+    {method} has_many :notes, as: :noteable
     {method} has_many :contacts
     {method} has_many :projects
     {method} has_many :web_properties
     {method} has_one  :primary_contact, polymorphic: true
-    {method} has_many :docs
+    {method} has_many :docs, as: :docable
 }
-class note { 
+class Note { 
     name : string
     body : text
-    belongs_to noteable_thing, polymorhpic: true
+    {method} belongs_to :noteable, polymorhpic: true
 }
 
 class Project { 
@@ -25,8 +25,9 @@ class Project {
     high_estimate : integer
     storypoints : integer
     due_date : datetime
-    {method}  belongs_to client
-    {method} has_many :notes, polymorphic: true 
+    {method}  belongs_to :client
+    {method} has_many :notes, as: :noteable
+    {method} has_many :docs, as: :docable
 }
 
 class Contact { 
@@ -37,23 +38,32 @@ class Contact {
     role : string
     jira : string
     slack : string
-    {method} belongs_to client
-    {method} belongs_to client, as: :primary_contact
-    {method} has_many :notes, polymorphic: true 
+    {method} belongs_to :client
+    {method} belongs_to :client, as: :primary_contact
+    {method} has_many :notes, as: :noteable
+    {method} has_many :docs, as: :docable
 }
 
 class WebPropery {
     name : string
     url  : string
-    {method} belongs_to client
+    {method} belongs_to: client
 }
 
 class Doc {
     name : string
     file : upload
+    {method} belongs_to :docable, polymorphic: true
 }
 
-Client |o--o{ CallNote
-Client |o--o{ Email
+Client |o--o{ Note
+Client |o--o{ Project
+Client |o--o{ Contact
+Client |o--o{ WebProperty
+Client |o--o{ Doc
+Project |o--o{ Note
+Project |o--o{ Doc
+Contact |o--o{ Note
+Contact |o--o{ Doc
 
 @enduml
