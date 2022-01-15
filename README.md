@@ -3,4 +3,4 @@ A CRM (Customer Relationship Management) app for Swiftkick Web. Quickly get over
 
 ## Information Architecture Diagram (UML)
 
-![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/SwiftkickWeb/armadillo/main/ia.puml)
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/SwiftkickWeb/armadillo/main/ia.puml?token=GHSAT0AAAAAABQLFCEZKPVWB2I7TJANB4ROYPDGNEQ)
