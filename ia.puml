@@ -44,7 +44,7 @@ class Contact {
     {method} has_many :docs, as: :docable
 }
 
-class WebPropery {
+class WebProperty {
     name : string
     url  : string
     {method} belongs_to: client
