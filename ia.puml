@@ -1,24 +1,56 @@
 @startuml
 
 class Client {
-    name : String
-    has_many :events, polymorphic: true 
+    name : string
+    address : string
+    {method} has_many :notes, polymorphic: true 
+    {method} has_many :contacts
+    {method} has_many :projects
+    {method} has_many :web_properties
+    {method} has_one  :primary_contact, polymorphic: true
+    {method} has_many :docs
+}
+class note { 
+    name : string
+    body : text
+    belongs_to noteable_thing, polymorhpic: true
 }
 
-class CallNote {
-    date : Datetime
-    title : string
-    body : text
-    attendees: string
-    belongs_to :client, as: :event
+class Project { 
+    name : string
+    description : text
+    jira_url: string
+    confluence_url: string
+    low_estimate : integer
+    high_estimate : integer
+    storypoints : integer
+    due_date : datetime
+    {method}  belongs_to client
+    {method} has_many :notes, polymorphic: true 
 }
-class Email {
-    date : Datetime
-    title : string
-    body : text
-    to: string
-    from: string
-    belongs_to :client, as: :event
+
+class Contact { 
+    name : string
+    email : string
+    phone : string
+    birthday: string
+    role : string
+    jira : string
+    slack : string
+    {method} belongs_to client
+    {method} belongs_to client, as: :primary_contact
+    {method} has_many :notes, polymorphic: true 
+}
+
+class WebPropery {
+    name : string
+    url  : string
+    {method} belongs_to client
+}
+
+class Doc {
+    name : string
+    file : upload
 }
 
 Client |o--o{ CallNote
