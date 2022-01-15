@@ -1,0 +1,27 @@
+@startuml
+
+class Client {
+    name : String
+    has_many :events, polymorphic: true 
+}
+
+class CallNote {
+    date : Datetime
+    title : string
+    body : text
+    attendees: string
+    belongs_to :client, as: :event
+}
+class Email {
+    date : Datetime
+    title : string
+    body : text
+    to: string
+    from: string
+    belongs_to :client, as: :event
+}
+
+Client |o--o{ CallNote
+Client |o--o{ Email
+
+@enduml
