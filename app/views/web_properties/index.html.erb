@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Web properties</h1>
+
+<div id="web_properties">
+  <% @web_properties.each do |web_property| %>
+    <%= render web_property %>
+    <p>
+      <%= link_to "Show this web property", web_property %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New web property", new_web_property_path %>
