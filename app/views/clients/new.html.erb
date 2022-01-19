@@ -1,9 +1,8 @@
-<h1>New client</h1>
-
-<%= render "form", client: @client %>
-
-<br>
-
-<div>
+<div class="card-header d-flex justify-content-between">
+  <h1>New client</h1>
   <%= link_to "Back to clients", clients_path %>
+</div>
+
+<div class="card-body">
+  <%= render "form", client: @client %>
 </div>
