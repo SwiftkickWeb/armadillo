@@ -1,9 +1,8 @@
-<h1>New web property</h1>
+<div class="card-header d-flex justify-content-between">
+  <h1>New web property</h1>
+  <%= link_to "Back to #{@client.name}", @client %>
+</div>
 
-<%= render "form", web_property: @web_property %>
-
-<br>
-
-<div>
-  <%= link_to "Back to web properties", web_properties_path %>
+<div class="card-body">
+  <%= render "form", web_property: @web_property %>
 </div>

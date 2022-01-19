@@ -1,13 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="card-header d-flex justify-content-between">
+  <h1>Web properties for <% @client.name %></h1>
+</div>
 
-<h1>Web properties</h1>
-
-<div id="web_properties">
+<ul id="web_properties" class="list-group">
   <% @web_properties.each do |web_property| %>
-    <%= render web_property %>
-    <p>
-      <%= link_to "Show this web property", web_property %>
-    </p>
+    <li class="list-group-item">
+      <%= link_to web_property.name, web_property.url %>
+    </li>
   <% end %>
 </div>
 

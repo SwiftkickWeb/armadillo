@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_040806) do
+ActiveRecord::Schema.define(version: 2022_01_19_052552) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -19,4 +19,14 @@ ActiveRecord::Schema.define(version: 2022_01_19_040806) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "web_properties", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_web_properties_on_client_id"
+  end
+
+  add_foreign_key "web_properties", "clients"
 end

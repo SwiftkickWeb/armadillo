@@ -1,5 +1,5 @@
 class WebPropertiesController < ApplicationController
-  before-action :get_client
+  before_action :get_client
   before_action :set_web_property, only: %i[ show edit update destroy ]
 
   # GET /web_properties or /web_properties.json
@@ -26,7 +26,7 @@ class WebPropertiesController < ApplicationController
 
     respond_to do |format|
       if @web_property.save
-        format.html { redirect_to client_web_properties_url(@client), notice: "Web property was successfully created." }
+        format.html { redirect_to @client, notice: "Web property was successfully created." }
         format.json { render :show, status: :created, location: @web_property }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class WebPropertiesController < ApplicationController
 
   private
     def get_client
-      @client = Client.find(params[:web_property_id])
+      @client = Client.find(params[:client_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
