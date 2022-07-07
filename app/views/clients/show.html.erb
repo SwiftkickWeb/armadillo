@@ -1,8 +1,12 @@
-<div class="card-header d-flex justify-content-between">
+<div class="card-header"> 
   <h1><%= @client.name %></h1>
   <div class="card-nav">
-    <%= link_to "Edit this client", edit_client_path(@client) %> |
-    <%= link_to "Back to clients", clients_path %>
+    <%= link_to edit_client_path(@client), :class => "btn btn-secondary" do  %>
+      <span class="fas fa-edit"></span> Edit this client
+    <% end %> 
+    <%= link_to clients_path, :class => "btn btn-secondary" do  %>
+      <span class="fas fa-arrow-left"></span> Back to Clients
+    <% end %> 
   </div>
 </div>
 

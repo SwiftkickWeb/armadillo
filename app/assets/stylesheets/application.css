@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+
+.card-header .card-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
