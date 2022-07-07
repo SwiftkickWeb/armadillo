@@ -1,0 +1,23 @@
+.client .web-properties {
+  margin-bottom: 1rem;
+}
+
+.card-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+.card-footer {
+  position: relative;
+}
+.card-footer {
+  min-height: 4.4rem;
+}
+.card-nav .btn { 
+  margin-left: .5rem;
+}
+.web-properties .card-nav {
+  margin-top: -.5rem;
+}
