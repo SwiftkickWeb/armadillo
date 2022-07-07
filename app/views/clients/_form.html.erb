@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, :class => "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_area :address %>
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_area :address, :class => "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb2">
+    <%= form.button :submit, :class => "btn btn-primary" do %>
+      <span class="fas fa-check"></span> Save
+    <% end %>
+
+    <%= link_to @client, :class => "btn btn-danger" do  %>
+      <span class="fas fa-ban"></span> Cancel
+    <% end %> 
   </div>
 <% end %>
