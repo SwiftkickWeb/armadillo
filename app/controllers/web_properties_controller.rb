@@ -39,7 +39,7 @@ class WebPropertiesController < ApplicationController
   def update
     respond_to do |format|
       if @web_property.update(web_property_params)
-        format.html { redirect_to client_web_properties_url(@client), notice: "Web property was successfully updated." }
+        format.html { redirect_to client_url(@client), notice: "Web property was successfully updated." }
         format.json { render :show, status: :ok, location: @web_property }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,12 +50,20 @@ class WebPropertiesController < ApplicationController
 
   # DELETE /web_properties/1 or /web_properties/1.json
   def destroy
-    @web_property.destroy
-
-    respond_to do |format|
-      format.html { redirect_to client_web_properties_url(@client), notice: "Web property was successfully destroyed." }
-      format.json { head :no_content }
+    if @web_property.destroy
+      msg = "Property was successfully deleted."
+      respond_to do |format|
+        format.html { redirect_to client_path(@client), notice: msg }
+        format.json { head :no_content }
+      end
+    else
+      msg = "There was an issue deleting the property."
+      respond_to do |format|
+        format.html { redirect_to client_path(@client), alert: msg }
+        format.json { head :no_content }
+      end
     end
+
   end
 
   private

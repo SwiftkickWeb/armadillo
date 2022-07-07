@@ -1,10 +1,12 @@
-<h1>Editing web property</h1>
+<div class="card-header">
+  <h1>Editing web property</h1>
+  <div class="card-nav">
+    <%= link_to client_path(@client), :class => "btn btn-secondary" do %>
+      <span class="fas fa-arrow-left"></span> Back to <%= @client.name %>
+    <% end %>
+  </div>
+</div>
 
-<%= render "form", web_property: @web_property %>
-
-<br>
-
-<div>
-  <%= link_to "Show this web property", @web_property %> |
-  <%= link_to "Back to web properties", web_properties_path %>
+<div class="card-body">
+  <%= render "form", web_property: @web_property %>
 </div>
