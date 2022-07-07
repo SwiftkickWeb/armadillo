@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="card-header"> 
+  <h1><%= @web_property.name %></h1>
+  <div class="card-nav">
+    <%= link_to clients_path, :class => "btn btn-secondary" do  %>
+      <span class="fas fa-arrow-left"></span> Back to <%= @client.name %>
+    <% end %> 
+  </div>
+</div>
 
-<%= render @web_property %>
+<div class="card-body web-property">
+  <%= render @web_property %>
+</div>
 
-<div>
-  <%= link_to "Edit this web property", edit_web_property_path(@web_property) %> |
-  <%= link_to "Back to web properties", web_properties_path %>
-
-  <%= button_to "Destroy this web property", @web_property, method: :delete %>
+<div class="card-footer">
+  <div class="card-nav">
+  <%= link_to edit_client_web_property_path(@client, @web_property), :class => "btn btn-secondary" do  %>
+    <span class="fas fa-edit"></span> Edit this Property
+  <% end %> 
+    <%= button_to client_web_property_path(@client, @web_property),
+      :class => "btn btn-secondary",
+      method: :delete, 
+      form: { 
+        data: { turbo_confirm: "Are you sure you want to delete this property, #{ @web_property.name }?"  }
+      } do %>
+      <span class="fas fa-trash"></span> Delete this Property
+    <% end %>
+  </div>
 </div>
