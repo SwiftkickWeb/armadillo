@@ -58,6 +58,10 @@ class ClientsController < ApplicationController
   end
 
   private
+    def get_contact
+      @contact = Contact.find(params[:contact_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])

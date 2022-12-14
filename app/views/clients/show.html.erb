@@ -34,7 +34,7 @@
         <%= render partial: "contact", collection: @client.contacts%>
       </ul>
     <% end %>
-    <%= link_to new_client_contact_url(@client), :class => "btn btn-primary" do %>
+    <%= link_to new_contact_url, :class => "btn btn-primary" do %>
       <span class="fas fa-plus"></span> Add New Contact</span>
     <% end %>
   </div>
