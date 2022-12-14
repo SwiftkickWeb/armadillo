@@ -1,0 +1,59 @@
+<%= form_with(model: contact) do |form| %>
+  <% if contact.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+        <% contact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "Contact Name" %>
+    <%= form.text_field :name, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :street, "Street Address" %>
+    <%= form.text_field :street, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :secondary_address %>
+    <%= form.text_field :secondary_address, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zip %>
+    <%= form.text_field :zip, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :state %>
+    <%= form.text_field :state, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :country %>
+    <%= form.text_field :country, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, :class => "form-control" %>
+  </div>
+
+  <div class="mb2">
+    <%= form.button :submit, :class => "btn btn-primary" do %>
+      <span class="fas fa-check"></span> Save
+    <% end %>
+  </div>
+<% end %>
