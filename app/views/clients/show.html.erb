@@ -17,30 +17,25 @@
       <p>No properties have been added yet.</p>
     <% else %>
       <ul class="web-properties list-group">
-      <% @client.web_properties.each do |web_property| %>
-        <li class="list-group-item">
-          <%= web_property.name %>:
-          <%= link_to web_property.url, web_property.url %>
-          <div class = "card-nav web-properties_admin">
-            <%= link_to edit_client_web_property_path(@client, web_property), class: 'btn btn-secondary btn-sm' do %>
-              <i class='fas fa-edit'></i> Edit
-            <% end %>
-            <%= button_to client_web_property_path(@client, web_property), 
-              method: :delete, 
-              form:{ 
-                data: { turbo_confirm: "Are you sure you want to delete the property: #{web_property.name}?"  }
-              },
-              class: 'btn btn-secondary btn-sm' do
-            %>
-              <i class='fas fa-trash'></i> Delete
-            <% end %>
-          </div>
-        </li>
-      <% end %>
+        <%= render partial: "web_property", collection: @client.web_properties, object: @client %>
       </ul>
     <% end %>
     <%= link_to new_client_web_property_url(@client), :class => "btn btn-primary" do %>
       <span class="fas fa-plus"></span> Add New Property</span>
+    <% end %>
+  </div>
+
+  <div class="client-contacts">
+    <h2>Contacts</h2>
+    <% if @client.contacts.empty? %>
+      <p>No contacts have been added yet.</p>
+    <% else %>
+      <ul class="web-properties list-group">
+        <%= render partial: "contact", collection: @client.contacts%>
+      </ul>
+    <% end %>
+    <%= link_to new_client_contact_url(@client), :class => "btn btn-primary" do %>
+      <span class="fas fa-plus"></span> Add New Contact</span>
     <% end %>
   </div>
 </div>

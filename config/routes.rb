@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :clients do 
     resources :web_properties
+    resources :contacts
+  end
+  resources :contacts do
+    resources :clients
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
